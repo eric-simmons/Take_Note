@@ -41,33 +41,24 @@ router.post("/notes", (req, res) => {
     });
   });
 //delete route
-router.delete('/notes:id', (req, res) => {
-    //read notes db
-    fs.readFile(dbPath, "utf-8", (error, data) => {
-        if (error) {
-            res.status(500).json(error)
-            return
-        }
-        const { id } = req.params
-        let noteData = JSON.parse(data)
-        const deletedNote = noteData.find(note => note.id == id)
-        //remove note by id
-        if (!deletedNote) {
-            res.status(400).json({ error: "Please provide an Id " })
-            return
-        }
-        else {
-            notesData = notesData.filter(note => note.id != id)
-        }
-        fs.writeFile(dbPath, JSON.stringify(noteData), (error) => {
-            if (error) {
-                res.status(500).json(error)
-                return
-            }
-            res.json(noteData)
-        })
 
-    })
-})
+router.delete("/notes/:id", (req, res) => {
+    const id = req.params.id;
+    if (!id) {
+      return res.status(400).json({ error: "Please provide an ID" });
+    }
+  
+    fs.readFile(dbPath, "utf8", function (err, data) {
+      const note = JSON.parse(data);
+      const updateNotes = note.filter((item) => item.id != req.params.id);
+      fs.writeFile(dbPath, JSON.stringify(updateNotes), function (err) {
+        if (err) {
+          return res.status(500).json(err);
+        }
+        res.json(true);
+      });
+    });
+  });
+
 
 module.exports = router;
