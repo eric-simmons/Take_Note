@@ -22,10 +22,12 @@ app.post('/api/notes', (req, res) => {
     //gets new note from the req object
     const newNote = req.body
     //push into 'db' array
-    db.push(newNote)
+   notes.push(newNote)
     //update db with new stringified object
-    fs.writeFileSync('./db/db.json', JSON.stringify(db))
-    res.json(db)
+    fs.writeFileSync(__dirname, '../db/db.json',
+        JSON.stringify(notes))
+
+    res.json(notes)
 })
 
 
