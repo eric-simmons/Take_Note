@@ -16,7 +16,6 @@ Take Note is a node application that allows a User to take notes, store them and
 
 ## Demonstration
 ![Demo of note taker app](./public/assets/take_note.png)
-![Link to Demo](https://app.castify.com/view/b9c94524-e77b-4c91-bf7d-a8f2e086c28b)
 
 ## Installation
 * `npm install` to install required dependencies.
