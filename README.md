@@ -17,6 +17,8 @@ Take Note is a node application that allows a User to take notes, store them and
 ## Demonstration
 ![Demo of note taker app](./public/assets/take_note.png)
 
+[Deployed at Heroku](https://take-note.herokuapp.com/)
+
 ## Installation
 * `npm install` to install required dependencies.
 * `npm run dev` to start application on Local Host
